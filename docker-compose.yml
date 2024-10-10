@@ -1,1 +1,26 @@
-# Your Solution
+services:
+  book_catalog:
+    image: book_catalog:3
+    build:
+      context: ./book_catalog # Check that this directory exists at the specified path
+      dockerfile: Dockerfile
+    container_name: book_catalog
+    platform: "linux/amd64"
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://admin:auRhtYaf08rO0fupnIIKw8MaRycpPetg@dpg-cs3773u8ii6s738hj1bg-a.oregon-postgres.render.com/sit722_part3_v3lh
+    restart: "no"
+
+  inventory_management:
+    image: inventory_management:3
+    build:
+      context: ./inventory_management # Check that this directory exists at the specified path
+      dockerfile: Dockerfile
+    container_name: inventory_management
+    platform: "linux/amd64"
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://admin:auRhtYaf08rO0fupnIIKw8MaRycpPetg@dpg-cs3773u8ii6s738hj1bg-a.oregon-postgres.render.com/sit722_part3_v3lh
+    restart: "no"
